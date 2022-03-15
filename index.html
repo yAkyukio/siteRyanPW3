@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Home</title>
+</head>
+<body>
+    <div class="min-h-screen bg-neutral-800">
+        
+        <!-- NavBar -->
+        <nav class="w-full h-16 flex items-center justify-between p-2 bg-neutral-800">
+            <a href="">
+                <img src="https://seeklogo.com/images/S/spotify-2015-logo-560E071CB7-seeklogo.com.png" alt="" class="h-10 w-10">
+            </a>
+            
+            <div class="relative">
+                <button id="mDropdown" class="h-10 w-10 flex justify-center items-center text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                
+                <div id="mContent" class="absolute text-white z-20 p-2 hidden -translate-x-10 bg-neutral-800">
+                    <a href="stats.html">Estatísticas</a>
+                </div>
+            </div>
+        </nav>
+        
+    <!-- Carrossel -->
+    <div class="h-96 bg-neutral-500 grid grid-cols-3 text-neutral-100 text-2xl relative">
+        <button id="pSlide">&lt; Previous</button>
+        
+        <div id="slide-container" class="text-5xl text-neutral-700 flex justify-center items-center text-center">
+            <img id="iSlide" src="img/img1.jpg" alt="" class="object-cover object-center h-96">
+        </div>
+        
+        <button id="nSlide">Next &gt;</button>
+    </div>
+    
+    <!-- Caixas -->
+    <div class="flex justify-between p-16 space-x-4">
+        
+        <a href="stats.html">
+            <div class="h-64 border-4 border-neutral-500">
+                <img src="data:image/png;base64,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" alt="" class="object-cover object-center w-full h-full"> 
+            </div>
+            <h1 class="text-green-500 font-bold text-lg">Estátisticas</h1>
+        </a>
+
+        <a>
+            <div class="h-64 border-4 border-neutral-500">
+                <img src="img/img1.jpg" alt="" class="object-cover object-center w-full h-full"> 
+            </div>
+            <h1 class="text-green-500 font-bold text-lg">Eclético</h1>
+        </a>
+
+        <a>
+            <div class="h-64 border-4 border-neutral-500">
+                <img src="img/img3.jfif" alt="" class="object-cover object-center w-full h-full"> 
+            </div>
+            <h1 class="text-green-500 font-bold text-lg">Lo-fi</h1>
+        </a>
+    </div>
+    
+    </div>
+</body>
+    <script>
+
+        /* Variáveis */
+        const nextButton = document.getElementById("nSlide")
+        const previousButton = document.getElementById("pSlide")
+        const imgSlide = document.getElementById("iSlide")
+
+        const menuDropdown = document.getElementById("mDropdown")
+        const menuContent = document.getElementById("mContent")
+
+        let numSlide = 0
+
+        const imgPath = [
+            "img/img1.jpg",
+            "img/img2.png",
+            "img/img3.jfif"
+        ]
+
+        /* Eventos */
+        menuDropdown.addEventListener("click", () => {
+            menuContent.classList.toggle("hidden")
+        })
+
+        nextButton.addEventListener("click", rightSlide)
+        previousButton.addEventListener("click", leftSlide)
+
+        /* Funções */
+        function rightSlide(){
+            if (numSlide !== 2) {
+                numSlide++
+                imgSlide.src = imgPath[numSlide] 
+            }
+        }
+
+        function leftSlide(){
+            if (numSlide !== 0) {
+                numSlide--
+                imgSlide.src = imgPath[numSlide]
+            }
+        }
+
+    </script>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Estátisticas - Spotify</title>
+</head>
+<body>
+    <div class="min-h-screen bg-neutral-700">
+
+        <!-- NavBar -->
+        <nav class="w-full h-16 flex items-center justify-between p-2 bg-neutral-800">
+            <a href="">
+                <img src="https://seeklogo.com/images/S/spotify-2015-logo-560E071CB7-seeklogo.com.png" alt="" class="h-10 w-10">
+            </a>
+            
+            <div class="relative">
+                <button id="mDropdown" class="h-10 w-10 flex justify-center items-center text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                
+                <div id="mContent" class="absolute text-white z-20 p-2 hidden -translate-x-2 bg-neutral-800">
+                    <a href="index.html">Home</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Colunas  -->
+        <div class="w-full flex p-4">
+
+            <!-- Coluna 1 - Esquerda -->
+            <div class="flex flex-col w-full">
+                <div class="w-full flex items-center justify-center">
+                    <img src="data:image/png;base64,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"
+                    alt=""
+                    class="w-96 h-96 object-center">
+                </div>
+                <div class="">
+                    <h1 class="text-green-500 font-bold text-3xl">Estatísticas</h1>
+                    <p class="text-white font-thin text-xl">O <a href="https://www.statsforspotify.com/" class="text-blue-400 hover:text-blue-300 underline">Stats for Spotify</a> é um site terceirizado que analisa os dados da sua conta do Spotify e mostra seus hábitos, como músicas e artistas que mais ouve. Há opções de ver o que o usuário tem ouvido nas últimas quatro semanas, nos últimos seis meses ou desde que a conta foi criada.</p>
+                </div>
+            </div>
+
+            <!-- Coluna 2 - Direita -->
+            <div class="flex flex-col w-full">
+
+                <div class="p-2 rounded-md border border-black">
+                    <button id="first-button" class="text-white font-semibold text-2xl px-2 py-1 w-full bg-neutral-800">O que significa "Spotify Stats"?</button>
+                    <div id="first-text" class="w-full bg-neutral-600 hidden">
+                        <p class="text-white font-thin p-2 py-1">Na prática, a palavra "stats" é simplesmente uma abreviação em inglês para "estatísticas", um apanhado geral dos hábitos de uso do usuário no Spotify. O Stats for Spotify lista seus "Spotify Stats" divididos em categorias por artistas e músicas, assim você pode saber não só o que mais ouve, mas também os artistas pelos quais tem preferência.</p>
+                    </div>
+                </div>
+
+                <div class="p-2 rounded-md border border-black">
+                    <button id="second-button" class="text-white font-semibold text-2xl px-2 py-1 w-full bg-neutral-800">Como usar o Stats for Spotify?</button>
+                    <div id="second-text" class="w-full bg-neutral-600 hidden">
+                        <p class="text-white font-thin p-2 py-1">
+                            Passo 1. Acesse o site do Stats for Spotify e clique em "Login com Spotify".<br>
+                            Passo 2. Escolha a forma de fazer login no Spotify. Caso já esteja logado no PC, esse passo pode ser pulado automaticamente.<br>
+                            Passo 3. Leia as autorizações requisitadas pelo Stats for Spotify e aceite se estiver de acordo.<br>
+                            Passo 4. Selecione Top Tracks para ver as músicas mais ouvidas ou Top Artists para ver os artistas mais ouvidos.<br>
+                            Passo 5. Na lista de mais ouvidos, clique em "last 4 weeks" para ver a lista das últimas quatro semanas, "last 6 months" para a lista de seis meses e "all time" para a lista desde o início de seu cadastro.<br>
+                            Após fazer sua escolha, o Stats for Spotify mostrará suas músicas ou artitas mais ouvidos nas últimas 4 semanas, seis meses ou desde a criação da conta.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+    <script>
+
+        /* Variáveis */
+        const menuDropdown = document.getElementById("mDropdown")
+        const menuContent = document.getElementById("mContent")
+
+        const firstButton = document.getElementById("first-button")
+        const firstText = document.getElementById("first-text")
+        const secondButton = document.getElementById("second-button")
+        const secondText = document.getElementById("second-text")
+
+        /* Eventos */
+        menuDropdown.addEventListener("click", () => {
+            menuContent.classList.toggle("hidden")
+        })
+
+        firstButton.addEventListener("click", () => {
+            firstText.classList.toggle("hidden")
+        })
+        secondButton.addEventListener("click", () => {
+            secondText.classList.toggle("hidden")
+        })
+
+</script>
+</html>
